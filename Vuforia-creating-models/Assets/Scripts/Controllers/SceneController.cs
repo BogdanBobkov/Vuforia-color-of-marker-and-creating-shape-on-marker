@@ -9,7 +9,7 @@ namespace Controllers
         private TargetBehaviour _currentTargetController;
         private Texture2D       _texture2D;
 
-        private void Start() => Locator.UiSwitcher.UiErrorMessage.Show();
+        private void Start() => Locator.UiSwitcher.SetLostMarkerMode();
 
         private void Update()
         {
@@ -25,11 +25,11 @@ namespace Controllers
             {
                 case TrackableBehaviour.Status.TRACKED:
                     _currentTargetController = targetController;
-                    Locator.UiSwitcher.UiErrorMessage.Hide();
+                    Locator.UiSwitcher.SetFoundMarkerMode();
                     break;
                 case TrackableBehaviour.Status.NO_POSE:
                     _currentTargetController = null;
-                    Locator.UiSwitcher.UiErrorMessage.Show();
+                    Locator.UiSwitcher.SetLostMarkerMode();
                     break;
             }
         }
